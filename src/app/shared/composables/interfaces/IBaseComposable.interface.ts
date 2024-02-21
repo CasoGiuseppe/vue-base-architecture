@@ -2,7 +2,6 @@
 // example:
 /*
   export interface IBaseComposable {
-    counter: Ref<number>;
-    increase(): number
+   ... code ...
   }
 */

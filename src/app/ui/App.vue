@@ -1,25 +1,12 @@
 <script setup lang="ts">
-import { inject, onMounted, ref } from 'vue'
-import type { IUserUseCase } from '@modules/user/application/interfaces/userUseCase'
-
-const useUser = inject<IUserUseCase>('useUser') as IUserUseCase
-const fullMessage = ref<string>('')
-
-onMounted(async () => {
-  const fullname = await useUser.createUser({
-    name: 'Giuseppe',
-    surname: 'Caso',
-    username: 'UserNameGiuseppe',
-    email: 'giuseppe2@gmail.com',
-    createAt: new Date(Date.now())
-  })
-
-  fullMessage.value = `${fullname}`
-})
+import { defineAsyncComponent } from 'vue';
+const exampleComponent = defineAsyncComponent({
+  loader: () => import(/* @vite-ignore */ './components/base/component-name/ComponentName.vue'),
+});
 </script>
 
 <template>
-  <div class="wrapper">New created user: {{ fullMessage }}</div>
+   <component :is="exampleComponent" />
 </template>
 
 <style scoped>

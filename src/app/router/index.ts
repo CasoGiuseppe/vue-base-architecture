@@ -5,14 +5,9 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: () => import(/* webpackChunkName: "Home" */ '@ui/layouts/HomeView.vue')
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: () => import(/* webpackChunkName: "About" */ '@ui/layouts/AboutView.vue')
-    }
+      name: 'name',
+      component: () => import(/* webpackChunkName: "Component Name" */ '@ui/components/base/component-name/ComponentName.vue')
+    }    
   ]
 })
 
