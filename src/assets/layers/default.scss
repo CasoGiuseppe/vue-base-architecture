@@ -1,4 +1,7 @@
 // create a root (html, body) properties and global tags inital state
 // example:
-/*html,
-body { ...code... }*/
+html,
+body {
+    margin: 0;
+    padding: 0;
+}

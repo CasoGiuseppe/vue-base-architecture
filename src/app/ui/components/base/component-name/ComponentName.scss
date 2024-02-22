@@ -1,4 +1,5 @@
 .component-name {
-    background: red;
-    padding: 2rem;
+    background: var(--base-c-yellow, #000);
+    color: var(--base-c-white, #fff);
+    padding: calc(var(--base-size-value, 0) * 3);
 }

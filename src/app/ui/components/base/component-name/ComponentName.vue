@@ -1,6 +1,6 @@
 <template>
     <section class="component-name">
-        example of base component
+        base component example
     </section>
 </template>
 <script setup>
