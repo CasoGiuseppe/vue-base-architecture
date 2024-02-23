@@ -3,6 +3,6 @@
         base component example
     </section>
 </template>
-<script setup>
+<script setup lang="ts">
 </script>
 <style scoped src="./ComponentName.scss"></style>
