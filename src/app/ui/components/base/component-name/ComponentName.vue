@@ -1,13 +1,21 @@
 <template>
+    <section>
+        <select v-model="$i18n.locale"  style="padding: 5px 15px;font-size: 16px;">
+        <option
+          v-for="locale in $i18n.availableLocales"
+          :key="`locale-${locale}`"
+          :value="locale"
+        >
+          {{ locale }}
+        </option>
+      </select>
+    </section>
     <section class="component-name">
-       {{ t('message', { name: 'base component' }) }}
+       {{ translate({key: 'message', options: {name: 'base component'} }) }}
     </section>
 </template>
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
-const { t } = useI18n({
-    inheritLocale: true,
-    useScope: 'local'
-})
+import useTranslation from '@shared/composables/useTranslation';
+const { translate } = useTranslation();
 </script>
 <style scoped src="./ComponentName.scss"></style>

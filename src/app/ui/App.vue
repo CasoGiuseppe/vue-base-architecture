@@ -2,11 +2,13 @@
 </script>
 
 <template>
-  <section class="app">
-    <RouterView v-slot="{ Component }">
-      <component :is="Component" />
-    </RouterView>
-  </section>
+  <Suspense>
+    <section class="app">
+      <RouterView v-slot="{ Component }">
+        <component :is="Component" />
+      </RouterView>
+    </section>
+  </Suspense>
 </template>
 
 <style scoped lang="scss">

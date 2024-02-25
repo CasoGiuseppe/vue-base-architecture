@@ -8,11 +8,11 @@ import "@assets/index.scss";
 // create lazy APP
 const app = createApp(defineAsyncComponent(() => import('@ui/App.vue')));
 
-app.use(router);
+app
+  .use(router)
+  .use(i18n)
+  .use(pinia);
 
 router.isReady().then(() => {
-  app
-    .use(i18n)
-    .use(pinia)
-    .mount('#app')
+  app.mount('#app')
 });
