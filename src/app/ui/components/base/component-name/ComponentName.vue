@@ -1,6 +1,6 @@
 <template>
     <section>
-        <select v-model="$i18n.locale"  style="padding: 5px 15px;font-size: 16px;">
+        <select @change="setLocale" style="padding: 5px 15px;font-size: 16px;">
         <option
           v-for="locale in $i18n.availableLocales"
           :key="`locale-${locale}`"
@@ -16,6 +16,10 @@
 </template>
 <script setup lang="ts">
 import useTranslation from '@shared/composables/useTranslation';
-const { translate } = useTranslation();
+const { translate, setNewTranslationLocale } = useTranslation();
+const setLocale = (evt: any) => {  
+    const { target: { value }} = evt || {};  
+    setNewTranslationLocale( value )
+}
 </script>
 <style scoped src="./ComponentName.scss"></style>
