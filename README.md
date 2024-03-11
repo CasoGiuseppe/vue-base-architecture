@@ -27,6 +27,64 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 npm install
 ```
 
+## Microfrontend Settings
+
+To add a new microfrontend to the ecosystem, follow these steps:
+
+### Configure vite.config.ts
+
+`vite-plugin-federation`**: In the `vite.config.ts` file of your new microfrontend, configure `vite-plugin-federation` to expose the modules or components you want to share.
+
+   ```typescript
+   // vite.config.ts of the microfrontend
+   import { defineConfig } from 'vite';
+   import federation from 'vite-plugin-federation';
+
+   export default defineConfig({
+     plugins: [
+       federation({
+         name: 'your_microfrontend',
+         filename: 'remoteEntry.js',
+         exposes: {
+           './Component': './src/Component.vue',
+         },
+         shared: ['vue'],
+       }),
+     ],
+   });
+   ```
+
+### Change Ports
+
+Define preview in the package.json of the microfrontend with your port.
+
+```json
+  "preview": "vite preview --port 5003 --strictPort"
+```
+
+(In this case, the microfrontend will run the preview on port 5003)
+
+### Update the Layout
+
+Go to the layout project and update its configuration to include the new microfrontend. This usually involves updating the `vite.config.js` file to consume the new `remoteEntry.js`.
+
+```typescript
+// vite.config.ts of the layout
+import { defineConfig } from 'vite';
+import federation from 'vite-plugin-federation';
+
+export default defineConfig({
+  plugins: [
+    federation({
+      remotes: {
+        your_microfrontend: 'http://localhost:5003/assets/remoteEntry.js',
+      },
+      shared: ['vue'],
+    }),
+  ],
+});
+```
+
 ### Compile and Hot-Reload for Development
 
 ```sh

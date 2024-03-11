@@ -1,15 +1,29 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import federation from "@originjs/vite-plugin-federation";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    federation({
+      name: "microfrontend-1",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./microfrontend-1": "./src/app/ui/App.vue",
+      },
+      shared: ["vue"],
+    }),
   ],
   build: {
-    target: 'esnext',
+    target: "esnext",
+    minify: false,
+    modulePreload: false,
+    cssCodeSplit: false,
+  },
+  server: {
+    port: 5001,
   },
   resolve: {
     alias: {

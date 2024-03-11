@@ -1,6 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "*.vue"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
@@ -13,7 +13,8 @@
       "@router/*": ["./src/app/router/*"],
       "@assets/*": ["./src/assets/*"],
       "@modules/*": ["./src/modules/*"],
-      "@translation/*": ["./src/app/translation/*"],
-    }
+      "@translation/*": ["./src/app/translation/*"]
+    },
+    "allowJs": true
   }
 }
