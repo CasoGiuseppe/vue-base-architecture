@@ -13,8 +13,8 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
 1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
 2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
 
 ## Customize configuration
@@ -33,26 +33,29 @@ To add a new microfrontend to the ecosystem, follow these steps:
 
 ### Configure vite.config.ts
 
-`vite-plugin-federation`**: In the `vite.config.ts` file of your new microfrontend, configure `vite-plugin-federation` to expose the modules or components you want to share.
+`vite-plugin-federation`\*\*: In the `vite.config.ts` file of your new microfrontend, configure `vite-plugin-federation` to expose the modules or components you want to share.
 
-   ```typescript
-   // vite.config.ts of the microfrontend
-   import { defineConfig } from 'vite';
-   import federation from 'vite-plugin-federation';
+```typescript
+// vite.config.ts of the microfrontend
+import { defineConfig } from 'vite'
+import federation from 'vite-plugin-federation'
 
-   export default defineConfig({
-     plugins: [
-       federation({
-         name: 'your_microfrontend',
-         filename: 'remoteEntry.js',
-         exposes: {
-           './Component': './src/Component.vue',
-         },
-         shared: ['vue'],
-       }),
-     ],
-   });
-   ```
+export default defineConfig({
+  plugins: [
+    federation({
+      name: 'your_microfrontend',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Component': './src/Component.vue'
+      },
+      shared: ['vue']
+    })
+  ],
+  server: {
+    port: 5003
+  }
+})
+```
 
 ### Change Ports
 
@@ -70,19 +73,19 @@ Go to the layout project and update its configuration to include the new microfr
 
 ```typescript
 // vite.config.ts of the layout
-import { defineConfig } from 'vite';
-import federation from 'vite-plugin-federation';
+import { defineConfig } from 'vite'
+import federation from 'vite-plugin-federation'
 
 export default defineConfig({
   plugins: [
     federation({
       remotes: {
-        your_microfrontend: 'http://localhost:5003/assets/remoteEntry.js',
+        your_microfrontend: 'http://localhost:5003/assets/remoteEntry.js'
       },
-      shared: ['vue'],
-    }),
-  ],
-});
+      shared: ['vue']
+    })
+  ]
+})
 ```
 
 ### Compile and Hot-Reload for Development
