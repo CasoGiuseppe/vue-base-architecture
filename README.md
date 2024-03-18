@@ -69,7 +69,9 @@ Define preview in the package.json of the microfrontend with your port.
 
 ### Update the Layout
 
-Go to the layout project and update its configuration to include the new microfrontend. This usually involves updating the `vite.config.js` file to consume the new `remoteEntry.js`.
+#### Update vite.config.ts
+
+Go to the layout project and update its configuration to include the new microfrontend. This usually involves updating the `vite.config.ts` file to consume the new `remoteEntry.js`.
 
 ```typescript
 // vite.config.ts of the layout
@@ -86,6 +88,14 @@ export default defineConfig({
     })
   ]
 })
+```
+
+#### Declare Module
+
+Go to the file remotes.d.ts for declare module
+
+```typescript
+declare module "your_microfrontend/*"{}
 ```
 
 ### Compile and Hot-Reload for Development
