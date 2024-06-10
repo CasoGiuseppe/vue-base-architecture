@@ -1,4 +1,4 @@
-import { DataTypeIsDenied } from "../../presentation/exceptions/DataTypeIsDenied";
+import { DataTypeIsDenied } from "../../../presentation/exceptions/DataTypeIsDenied";
 
 export type PrimitivesTypes = string | number | boolean | Date;
 type Optional<T> = T | undefined | null;
