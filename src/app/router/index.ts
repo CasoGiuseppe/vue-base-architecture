@@ -6,9 +6,17 @@ const router = createRouter({
     {
       path: '/',
       name: 'app',
-      component: () => import(/* webpackChunkName: "Root layout" */ '@ui/layouts/skeleton-root/SkeletonRoot.vue'),
+      redirect: { name: 'entry' },
+      component: () => import(/* webpackChunkName: "RootLayout" */ '@ui/layouts/skeleton-root/SkeletonRoot.vue'),
 
       children: [
+        {
+          path: 'entry',
+          name: 'entry',
+          components: {
+            content: () => import(/* webpackChunkName: "EntryView" */ '@ui/layouts/entry-view/EntryView.vue'),
+          },
+        },
         {
           path: 'error/:code?',
           name: 'error',
