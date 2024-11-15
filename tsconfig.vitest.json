@@ -8,6 +8,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@ui/*": ["./src/app/ui/*"],
+      "@app/*": ["./src/app/*"],
       "@shared/*": ["./src/app/shared/*"],
       "@router/*": ["./src/app/router/*"],
       "@assets/*": ["./src/assets/*"],
