@@ -22,6 +22,7 @@
       "@assets/*": ["./src/assets/*"],
       "@modules/*": ["./src/modules/*"],
       "@translation/*": ["./src/app/translation/*"],
+      "@tests/*": ["./src/app/shared/tests/*"],
     }
   }
 }
